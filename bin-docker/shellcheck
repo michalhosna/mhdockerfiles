@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$(dirname "$DIR")"
+
+# shellcheck source=bin-docker/_tty.sh
+source "${DIR}/_tty.sh"
+
+docker_run --init \
+	-v "$PROJECT_ROOT":"$PROJECT_ROOT":delegated \
+	-w "$(pwd)" \
+	-u 1000:1000 \
+	--entrypoint="/bin/shellcheck" \
+	koalaman/shellcheck-alpine:v0.7.1 "$@"
