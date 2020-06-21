@@ -1,0 +1,6 @@
+ARG ALPINE_VERSION
+FROM alpine:${ALPINE_VERSION}
+
+ARG OPENSSH_VERSION
+
+RUN apk add --no-cache openssh=${OPENSSH_VERSION} curl=7.69.1-r0
