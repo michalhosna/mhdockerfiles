@@ -1,0 +1,8 @@
+ARG NODE_VERSION
+FROM node:${NODE_VERSION}-alpine
+
+ARG APOLLO_VERSION
+
+RUN npm install -g apollo@${APOLLO_VERSION}
+
+ENTRYPOINT ["apollo"]
