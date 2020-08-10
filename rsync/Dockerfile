@@ -1,0 +1,6 @@
+ARG ALPINE_VERSION
+FROM alpine:${ALPINE_VERSION}
+
+ARG RSYNC_VERSION
+
+RUN apk add --no-cache rsync=${RSYNC_VERSION}
