@@ -3,4 +3,4 @@ FROM alpine:${ALPINE_VERSION}
 
 ARG RSYNC_VERSION
 
-RUN apk add --no-cache rsync=${RSYNC_VERSION}
+RUN apk add --no-cache rsync=${RSYNC_VERSION} openssh=8.3_p1-r0

@@ -1,7 +1,7 @@
 NAME = mhdockerfiles/rsync
 RSYNC_VERSION=3.1.3-r3
 ALPINE_VERSION=3.12
-TAG = v1_alpine$(ALPINE_VERSION)_rsync$(RSYNC_VERSION)
+TAG = v2_alpine$(ALPINE_VERSION)_rsync$(RSYNC_VERSION)
 
 all: build publish publish-latest
 
