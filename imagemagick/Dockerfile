@@ -1,0 +1,7 @@
+ARG ALPINE_VERSION
+FROM alpine:${ALPINE_VERSION}
+
+ARG IMAGEMAGICK_VERSION
+
+RUN apk add --no-cache imagemagick=~${IMAGEMAGICK_VERSION} bash zip
+
