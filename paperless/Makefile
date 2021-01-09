@@ -1,10 +1,10 @@
 NAME = mhdockerfiles/paperless
-PAPERLESS_VERSION=1a4281f6b0d1b25341cc7f47e9a2d66e17370428a9dbfac25ded32c6ed31d2b8
+PAPERLESS_VERSION=f6f840dd8c347a3a35c319db31b6a11782db9c40ba4b58b296dff27aabc68bdc
 TAG = v1_$(PAPERLESS_VERSION)
 
 all: build publish publish-latest
 
-build:
+build: Dockerfile Makefile
 	docker build --build-arg "PAPERLESS_VERSION=$(PAPERLESS_VERSION)"  -t $(NAME):$(TAG) .
 
 publish:
