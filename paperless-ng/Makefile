@@ -1,5 +1,5 @@
 NAME = mhdockerfiles/paperless-ng
-PAPERLESS_VERSION=1.7.1
+PAPERLESS_VERSION=1.9.2
 TAG = v1_$(PAPERLESS_VERSION)
 
 all: build publish publish-latest
