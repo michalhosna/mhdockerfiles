@@ -1,17 +1,17 @@
-NAME = mhdockerfiles/paperless-ng
-PAPERLESS_VERSION=1.11.3
+NAME = registry.hub.docker.com/mhdockerfiles/paperless-ng
+PAPERLESS_VERSION=2.0.1
 TAG = v1_$(PAPERLESS_VERSION)
 
 all: build publish publish-latest
 
 build: Dockerfile Makefile
-	docker build --platform amd64 --build-arg "PAPERLESS_VERSION=$(PAPERLESS_VERSION)"  -t $(NAME):$(TAG) .
+	podman build --platform linux/amd64 --build-arg "PAPERLESS_VERSION=$(PAPERLESS_VERSION)"  -t $(NAME):$(TAG) .
 
 publish:
-	docker push $(NAME):$(TAG)
+	podman push $(NAME):$(TAG)
 
 publish-latest:
-	docker tag $(NAME):$(TAG) $(NAME):latest
-	docker push $(NAME):latest
+	podman tag $(NAME):$(TAG) $(NAME):latest
+	podman push $(NAME):latest
 
 .PHONY: publish publish-latest all build
