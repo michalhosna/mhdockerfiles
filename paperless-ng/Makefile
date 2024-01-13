@@ -1,5 +1,5 @@
 NAME = registry.hub.docker.com/mhdockerfiles/paperless-ng
-PAPERLESS_VERSION=2.0.1
+PAPERLESS_VERSION=2.3.3
 TAG = v1_$(PAPERLESS_VERSION)
 
 all: build publish publish-latest
