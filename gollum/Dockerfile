@@ -14,8 +14,7 @@ RUN gem install asciidoctor --version="2.0.20"
 
 COPY auth-diff.patch /var/auth-diff.patch
 WORKDIR "/usr/local/bundle/gems/gollum-$GOLLUM_VERSION"
-
-RUN git apply --ignore-space-change --ignore-whitespace  /var/auth-diff.patch && \
+RUN git apply /var/auth-diff.patch && \
 	rm /var/auth-diff.patch
 
 WORKDIR /wiki
