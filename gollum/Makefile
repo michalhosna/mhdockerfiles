@@ -1,6 +1,6 @@
 NAME = mhdockerfiles/gollum
 GOLLUM_VERSION=5.3.2
-TAG = v2_gollum$(GOLLUM_VERSION)
+TAG = v3tmp_gollum$(GOLLUM_VERSION)
 
 all: build publish publish-latest
 

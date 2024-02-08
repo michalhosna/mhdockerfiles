@@ -25,10 +25,7 @@ index 00000000..39ce12bf
 +">
 +     <p>
 +     {{#user_authed}}
-+       {{user_name}} ({{user_email}}) | <strong><a href="/__omnigollum__/logout">[Logout]</a></strong>
-+     {{/user_authed}}
-+     {{^user_authed}}
-+       <strong><a href="/__omnigollum__/login">[Login]</a></strong>
++       {{user_name}} ({{user_email}}) | <strong><a href="/oauth2/sign_out">[Logout]</a></strong>
 +     {{/user_authed}}
 +     <p>
 + </div>

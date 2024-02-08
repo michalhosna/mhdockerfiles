@@ -10,15 +10,7 @@ RUN gem install github-linguist --version=7.28.0
 
 ARG GOLLUM_VERSION
 RUN gem install gollum --version="$GOLLUM_VERSION"
-RUN gem install omnigollum --version="0.1.6"
-RUN gem install omniauth-gitlab --version="2.0.0"
-RUN gem install omniauth_openid_connect --version="0.7.1"
 RUN gem install asciidoctor --version="2.0.20"
-
-COPY auth-diff.patch /var/auth-diff.patch
-WORKDIR "/usr/local/bundle/gems/gollum-$GOLLUM_VERSION"
-RUN git apply /var/auth-diff.patch && \
-	rm /var/auth-diff.patch
 
 WORKDIR /wiki
 ENTRYPOINT ["gollum"]
