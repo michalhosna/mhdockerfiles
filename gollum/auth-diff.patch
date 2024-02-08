@@ -1,3 +1,16 @@
+diff --git a/lib/gollum/app.rb b/lib/gollum/app.rb
+index 4e7c3ea8..f21909d4 100644
+--- a/lib/gollum/app.rb
++++ b/lib/gollum/app.rb
+@@ -129,6 +129,8 @@ module Precious
+       @static_assets_path = settings.wiki_options.fetch(:static_assets_path, ::File.join(File.dirname(__FILE__), 'public/assets'))
+       @mathjax_path = ::File.join(File.dirname(__FILE__), 'public/gollum/javascript/MathJax')
+ 
++      @gollum_author_email = session['gollum.author']['email']
++
+       Sprockets::Helpers.configure do |config|
+         config.environment = settings.sprockets
+         config.environment.context_class.class_variable_set(:@@base_url, @base_url)
 diff --git a/lib/gollum/templates/layout.mustache b/lib/gollum/templates/layout.mustache
 index 8864be69..942d9cdf 100644
 --- a/lib/gollum/templates/layout.mustache
@@ -12,7 +25,7 @@ index 8864be69..942d9cdf 100644
  </div>
 diff --git a/lib/gollum/templates/user.mustache b/lib/gollum/templates/user.mustache
 new file mode 100644
-index 00000000..ca964f93
+index 00000000..ed6701aa
 --- /dev/null
 +++ b/lib/gollum/templates/user.mustache
 @@ -0,0 +1,10 @@
@@ -23,42 +36,19 @@ index 00000000..ca964f93
 +    color: #666666;
 +">
 +    <p>
-+        {{user_name}} ({{user_email}}) | <strong><a href="/oauth2/sign_out">[Logout]</a></strong>
++        {{gollum_author_email}} | <strong><a href="/oauth2/sign_out">[Logout]</a></strong>
 +    <p>
 +</div>
-diff --git a/lib/gollum/views/helpers/locale_helpers.rb b/lib/gollum/views/helpers/locale_helpers.rb
-index da15bc76..5e864328 100644
---- a/lib/gollum/views/helpers/locale_helpers.rb
-+++ b/lib/gollum/views/helpers/locale_helpers.rb
-@@ -77,6 +77,14 @@ module Precious
-       def no_method_message(method_name, message = NO_METHOD_MESSAGE)
-         "[#{message}: #{method_name}]"
-       end
-+
-+      def current_user_email
-+        session["gollum.author"]["email"]
-+      end
-+
-+      def current_user_name
-+        session["gollum.author"]
-+      end
-     end
-   end
- end
 diff --git a/lib/gollum/views/layout.rb b/lib/gollum/views/layout.rb
-index c1f825f0..21132493 100644
+index c1f825f0..4e542e20 100644
 --- a/lib/gollum/views/layout.rb
 +++ b/lib/gollum/views/layout.rb
-@@ -90,6 +90,14 @@ module Precious
+@@ -90,6 +90,10 @@ module Precious
          false
        end
        
-+      def current_user_email
-+        @current_user_email
-+      end
-+
-+      def current_user_name
-+        @current_user_name
++      def gollum_author_email
++        @gollum_author_email
 +      end
 +
        def overview
