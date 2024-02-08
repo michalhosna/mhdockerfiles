@@ -27,7 +27,7 @@ index 00000000..ca964f93
 +    <p>
 +</div>
 diff --git a/lib/gollum/views/helpers/locale_helpers.rb b/lib/gollum/views/helpers/locale_helpers.rb
-index da15bc76..e72add4e 100644
+index da15bc76..5e864328 100644
 --- a/lib/gollum/views/helpers/locale_helpers.rb
 +++ b/lib/gollum/views/helpers/locale_helpers.rb
 @@ -77,6 +77,14 @@ module Precious
@@ -40,7 +40,7 @@ index da15bc76..e72add4e 100644
 +      end
 +
 +      def current_user_name
-+        session["gollum.author"]["name"]
++        session["gollum.author"]
 +      end
      end
    end
