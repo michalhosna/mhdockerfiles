@@ -1,12 +1,16 @@
 diff --git a/lib/gollum/app.rb b/lib/gollum/app.rb
-index 4e7c3ea8..b3760fd0 100644
+index 4e7c3ea8..5e893c4f 100644
 --- a/lib/gollum/app.rb
 +++ b/lib/gollum/app.rb
-@@ -143,6 +143,8 @@ module Precious
+@@ -140,9 +140,12 @@ module Precious
+         end
+       end
+ 
++      @gollum_author_email = session['gollum.author'].email
++
        forbid unless @allow_editing || request.request_method == 'GET'
      end
  
-+    @gollum_author_email = session['gollum.author'].email
 +
      get '/' do
        redirect clean_url(::File.join(@base_url, wiki_new.index_page))
