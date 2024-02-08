@@ -1,12 +1,12 @@
 diff --git a/lib/gollum/app.rb b/lib/gollum/app.rb
-index 4e7c3ea8..f21909d4 100644
+index 4e7c3ea8..40786349 100644
 --- a/lib/gollum/app.rb
 +++ b/lib/gollum/app.rb
 @@ -129,6 +129,8 @@ module Precious
        @static_assets_path = settings.wiki_options.fetch(:static_assets_path, ::File.join(File.dirname(__FILE__), 'public/assets'))
        @mathjax_path = ::File.join(File.dirname(__FILE__), 'public/gollum/javascript/MathJax')
  
-+      @gollum_author_email = session['gollum.author']['email']
++      @gollum_author_email = session['gollum.author'].email
 +
        Sprockets::Helpers.configure do |config|
          config.environment = settings.sprockets
