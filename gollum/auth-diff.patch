@@ -1,16 +1,16 @@
 diff --git a/lib/gollum/app.rb b/lib/gollum/app.rb
-index 4e7c3ea8..40786349 100644
+index 4e7c3ea8..b3760fd0 100644
 --- a/lib/gollum/app.rb
 +++ b/lib/gollum/app.rb
-@@ -129,6 +129,8 @@ module Precious
-       @static_assets_path = settings.wiki_options.fetch(:static_assets_path, ::File.join(File.dirname(__FILE__), 'public/assets'))
-       @mathjax_path = ::File.join(File.dirname(__FILE__), 'public/gollum/javascript/MathJax')
+@@ -143,6 +143,8 @@ module Precious
+       forbid unless @allow_editing || request.request_method == 'GET'
+     end
  
-+      @gollum_author_email = session['gollum.author'].email
++    @gollum_author_email = session['gollum.author'].email
 +
-       Sprockets::Helpers.configure do |config|
-         config.environment = settings.sprockets
-         config.environment.context_class.class_variable_set(:@@base_url, @base_url)
+     get '/' do
+       redirect clean_url(::File.join(@base_url, wiki_new.index_page))
+     end
 diff --git a/lib/gollum/templates/layout.mustache b/lib/gollum/templates/layout.mustache
 index 8864be69..942d9cdf 100644
 --- a/lib/gollum/templates/layout.mustache
