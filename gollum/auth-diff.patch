@@ -26,14 +26,14 @@ index 00000000..ca964f93
 +        {{user_name}} ({{user_email}}) | <strong><a href="/oauth2/sign_out">[Logout]</a></strong>
 +    <p>
 +</div>
-diff --git a/lib/gollum/views/layout.rb b/lib/gollum/views/layout.rblib/gollum/views/layout.rb
+diff --git a/lib/gollum/views/layout.rb b/lib/gollum/views/layout.rb
 index c1f825f0..31768441 100644
 --- a/lib/gollum/views/layout.rb
 +++ b/lib/gollum/views/layout.rb
 @@ -90,6 +90,14 @@ module Precious
          false
        end
-
+       
 +      def user_email
 +        session["gollum.author"]["email"]
 +      end
@@ -53,8 +53,8 @@ index 0c651296..518f1da9 100644
        def latest_changes
          true
        end
--
--
+-    
+-      
 +      def search
 +        true
 +      end
