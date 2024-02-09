@@ -1,0 +1,16 @@
+diff --git a/lib/gollum/views/overview.rb b/lib/gollum/views/overview.rb
+index 0c651296..518f1da9 100644
+--- a/lib/gollum/views/overview.rb
++++ b/lib/gollum/views/overview.rb
+@@ -74,8 +74,9 @@ module Precious
+       def latest_changes
+         true
+       end
+-    
+-      
++      def search
++        true
++      end
+     end
+   end
+ end

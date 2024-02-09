@@ -1,57 +1,47 @@
 diff --git a/lib/gollum/templates/layout.mustache b/lib/gollum/templates/layout.mustache
-index 6e941f61..a134253c 100644
+index 8864be69..942d9cdf 100644
 --- a/lib/gollum/templates/layout.mustache
 +++ b/lib/gollum/templates/layout.mustache
-@@ -58,6 +58,8 @@
+@@ -58,6 +58,7 @@
    <title>{{title}}</title>
  </head>
  <body>
 +{{< user}}
-+
  <div class="container-lg clearfix">
  {{{yield}}}
  </div>
 diff --git a/lib/gollum/templates/user.mustache b/lib/gollum/templates/user.mustache
 new file mode 100644
-index 00000000..39ce12bf
+index 00000000..10fdafa4
 --- /dev/null
 +++ b/lib/gollum/templates/user.mustache
-@@ -0,0 +1,15 @@
+@@ -0,0 +1,12 @@
 +<div id="user" style="
 +    text-align: right;
 +    padding-right:0.5em;
 +    line-height: 2.0em;
 +    color: #666666;
 +">
-+     <p>
-+     {{#user_authed}}
-+       {{user_name}} ({{user_email}}) | <strong><a href="/__omnigollum__/logout">[Logout]</a></strong>
-+     {{/user_authed}}
-+     {{^user_authed}}
-+       <strong><a href="/__omnigollum__/login">[Login]</a></strong>
-+     {{/user_authed}}
-+     <p>
-+ </div>
++    <p>
++        {{#gollum_author_email}}
++            {{gollum_author_email}} | <strong><a href="{{gollum_logout_link}}">[Logout]</a></strong>
++        {{/gollum_author_email}}
++    <p>
++</div>
 diff --git a/lib/gollum/views/layout.rb b/lib/gollum/views/layout.rb
-index c70d6b40..337c94fa 100644
+index c1f825f0..d0dff9c6 100644
 --- a/lib/gollum/views/layout.rb
 +++ b/lib/gollum/views/layout.rb
-@@ -74,7 +74,19 @@ module Precious
-       def history
+@@ -90,6 +90,14 @@ module Precious
          false
        end
--      
-+
-+      def user_authed
-+        @user_authed
+       
++      def gollum_author_email
++        @gollum_author_email
 +      end
 +
-+      def user_email
-+        @user.email
-+      end
-+
-+      def user_name
-+        @user.name
++      def gollum_logout_link
++        @gollum_logout_link
 +      end
 +
        def overview
