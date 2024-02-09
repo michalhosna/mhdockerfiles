@@ -1,3 +1,15 @@
+diff --git a/lib/gollum/public/gollum/stylesheets/print.scss b/lib/gollum/public/gollum/stylesheets/print.scss
+index 427338b0..ff91301b 100644
+--- a/lib/gollum/public/gollum/stylesheets/print.scss
++++ b/lib/gollum/public/gollum/stylesheets/print.scss
+@@ -14,3 +14,7 @@ nav.actions{
+ .breadcrumb{
+   display:none
+ }
++
++div#user {
++    display:none
++}
 diff --git a/lib/gollum/templates/layout.mustache b/lib/gollum/templates/layout.mustache
 index 8864be69..942d9cdf 100644
 --- a/lib/gollum/templates/layout.mustache
