@@ -16,6 +16,8 @@ COPY patches /var/gollum-patches
 WORKDIR "/usr/local/bundle/gems/gollum-$GOLLUM_VERSION"
 RUN git apply /var/gollum-patches/*.patch
 
+RUN useradd --create-home --uid 1001 --shell /bin/bash --groups www-data gollum
+
 WORKDIR /wiki
 ENTRYPOINT ["gollum"]
 CMD ["--port", "8080"]
